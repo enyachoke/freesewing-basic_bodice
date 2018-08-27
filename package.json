@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
-  "name": "@freesewing/template",
+  "name": "@freesewing/bodice",
   "description": "Freesewing pattern for template",
   "author": "Joost De Cock <joost@decock.org> (https://github.com/joostdecock)",
   "license": "MIT",
@@ -28,10 +28,11 @@
     "clean": "rimraf dist",
     "pretty": "npx prettier --write 'src/*.js'",
     "lint": "eslint --fix 'src/*.js'",
-    "browserbuild": "rollup -c rollup.js -o dist/browser.js -f iife -n freesewing_patterns_template --footer 'freesewing.patterns.template = freesewing_patterns_template;'",
+    "browserbuild": "rollup -c rollup.js -o dist/browser.js -f iife -n freesewing_patterns_template --footer 'freesewing.patterns.bodice = freesewing_patterns_template;'",
     "nodebuild": "rollup -c rollup.js -o dist/index.js -f cjs",
     "modulebuild": "rollup -c rollup.js -o dist/index.mjs -f es",
-    "build": "npm run clean && npm run browserbuild && npm run nodebuild && npm run modulebuild"
+    "build": "npm run clean && npm run browserbuild && npm run nodebuild && npm run modulebuild",
+    "dev": "rollup --watch -c rollup-dev.js -o dist/browser.js -f iife -n freesewing_patterns_template --footer 'freesewing.patterns.bodice = freesewing_patterns_template;'"
   },
   "husky": {
     "hooks": {
@@ -45,8 +46,8 @@
     ]
   },
   "dependencies": {
-    "freesewing": "^0.7.1",
-    "@freesewing/plugin-bundle": "0.0.1"
+    "@freesewing/plugin-bundle": "0.1.6",
+    "freesewing": "0.10.1"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.56",
@@ -55,8 +56,8 @@
     "@freesewing/antman": "0.2.0",
     "@freesewing/models": "0.4.0",
     "@freesewing/plugin-debug": "0.0.1",
-    "@freesewing/plugin-designer": "0.6.0",
-    "@freesewing/plugin-theme": "0.10.0",
+    "@freesewing/plugin-designer": "^0.7.1",
+    "@freesewing/plugin-theme": "^0.12.1",
     "@freesewing/plugin-validate": "0.0.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
@@ -73,7 +74,9 @@
     "rollup-plugin-commonjs": "9.1.3",
     "rollup-plugin-filesize": "^4.0.1",
     "rollup-plugin-json": "^3.0.0",
+    "rollup-plugin-livereload": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-serve": "^0.4.2",
     "rollup-plugin-terser": "^1.0.1"
   },
   "files": [
