@@ -6,7 +6,7 @@ var front = {
     let {store, sa, Point, points, Path, paths, Snippet, snippets, options, measurements, final, paperless, macro} = part.shorthand();
 
     // Building on top of back, just need to change the text
-    paths.example.attributes.set("data-text", "This is the back part");
+    // paths.example.attributes.set("data-text", "This is the back part");
 
     // Final?
     if (final) {

@@ -212,6 +212,8 @@ var ref = {
       .curve(points.p32, points.Cp7, points.p31)
       .curve(points.p31, points.Cp8, points.p30);
 
+      console.log('Distance',points.p0.dist(points.p5))
+
     // Final?
     if (final) {
     }

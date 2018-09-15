@@ -1,63 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Bodice</title>
-    <script type="text/javascript" src="node_modules/freesewing/dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/plugin-bundle/dist/browser.js"></script>
-    <script type="text/javascript" src="dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/plugin-theme/dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/plugin-designer/dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/plugin-debug/dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/plugin-validate/dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/models/dist/browser.js"></script>
-    <script type="text/javascript" src="node_modules/@freesewing/antman/dist/browser.js"></script>
-  </head>
-  <body>
-    <div id="svg"></div>
-    <script>
-      // Instantiating pattern. Replace 'template' with your pattern name
-      var pattern = freesewing.patterns.bodice
-        .with(freesewing.plugins.debug)
-        .with(freesewing.plugins.theme)
-        .with(freesewing.plugins.designer)
-        .with(freesewing.plugins.validate)
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bodice</title>
+  <script type="text/javascript" src="node_modules/freesewing/dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/plugin-bundle/dist/browser.js"></script>
+  <script type="text/javascript" src="dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/plugin-theme/dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/plugin-designer/dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/plugin-debug/dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/plugin-validate/dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/models/dist/browser.js"></script>
+  <script type="text/javascript" src="node_modules/@freesewing/antman/dist/browser.js"></script>
+</head>
+
+<body>
+  <div id="svg"></div>
+  <script>
+    // Instantiating pattern. Replace 'template' with your pattern name
+    var pattern = freesewing.patterns.bodice
+      .with(freesewing.plugins.debug)
+      .with(freesewing.plugins.theme)
+      .with(freesewing.plugins.designer)
+      .with(freesewing.plugins.validate)
       ;
-      pattern.settings.measurements = freesewing.models.men.manSize36;
+    pattern.settings.measurements = {
+      bustCircumference: 760,
+      waistCircumference: 610,
+      neckCircumference: 355,
+      armscyeHeight: 204,
+      backLength: 388,
+      backWidth: 330,
+      abdomenHeight: 90,
+      hipHeight: 190,
+      waistHeight: 485,
+      hipCircumference: 870,
+      bustHeight: 313,
+      backShoulderHeight: 23.5,
+      frontShoulderHeight: 46,
+      waistMeasurement: 720,
+      shoulderLength: 115,
+      shoulderSlope: 40
+    }
 
-      // Uncomment this line to enable paperless
-      //pattern.settings.paperless = true;
+    // Uncomment this line to enable paperless
+    //pattern.settings.paperless = true;
 
-      // Some default settings
-      pattern.settings.sa = 10;
-      pattern.settings.units = 'metric';
+    // Some default settings
+    pattern.settings.sa = 10;
+    pattern.settings.units = 'metric';
 
-      //pattern.sampleOption('chestEase');
-      //pattern.sampleMeasurement('chestCircumference');
-      //pattern.sampleModels(freesewing.models.men);
-      //pattern.sampleModels(freesewing.models.antman);
-      pattern.draft();
-      document.getElementById("svg").innerHTML = pattern.render();
+    //pattern.sampleOption('chestEase');
+    //pattern.sampleMeasurement('chestCircumference');
+    //pattern.sampleModels(freesewing.models.men);
+    //pattern.sampleModels(freesewing.models.antman);
+    pattern.draft();
+    document.getElementById("svg").innerHTML = pattern.render();
 
-      function pointHover(evt) {
-        var point = evt.target;
-        var id = point.id;
-        var cx = point.getAttribute('x');
-        var cy = point.getAttribute('y');
-        var name = point.getAttribute('data-point');
-        var part = point.getAttribute('data-part');
-        console.log(name+' ('+cx+', '+cy+') @ '+part);
-        var scale = 2;
-        cx = cx-scale*cx;
-        cy = cy-scale*cy;
-        point.setAttribute("transform", 'matrix('+scale+', 0, 0, '+scale+', '+cx+', '+cy+')');
-        pointUnhover(id);
-      }
-      function pointUnhover(id) {
-        setTimeout(function(){
-          document.getElementById(id).removeAttribute("transform", '');
-        }, 500);
-      }
-    </script>
-  </body>
+    function pointHover(evt) {
+      var point = evt.target;
+      var id = point.id;
+      var cx = point.getAttribute('x');
+      var cy = point.getAttribute('y');
+      var name = point.getAttribute('data-point');
+      var part = point.getAttribute('data-part');
+      console.log(name + ' (' + cx + ', ' + cy + ') @ ' + part);
+      var scale = 2;
+      cx = cx - scale * cx;
+      cy = cy - scale * cy;
+      point.setAttribute("transform", 'matrix(' + scale + ', 0, 0, ' + scale + ', ' + cx + ', ' + cy + ')');
+      pointUnhover(id);
+    }
+    function pointUnhover(id) {
+      setTimeout(function () {
+        document.getElementById(id).removeAttribute("transform", '');
+      }, 500);
+    }
+  </script>
+</body>
+
 </html>
