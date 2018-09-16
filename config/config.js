@@ -1,23 +1,14 @@
 export default {
   name: "bodice",
   measurements: ['bustCircumference'
-    , 'waistCircumference', 'neckCircumference','armscyeHeight',
-    'backLength','backWidth','abdomenHeight','hipHeight','waistHeight','bustHeight',
-    'backShoulderHeight','frontShoulderHeight','shoulderLength','hipCircumference'],
+    , 'waistCircumference', 'neckCircumference', 'armscyeHeight',
+    'backLength', 'backWidth', 'abdomenHeight', 'hipHeight', 'waistHeight', 'bustHeight',
+    'backShoulderHeight', 'frontShoulderHeight', 'shoulderLength', 'hipCircumference'],
   options: {
-    // Constants
-    foo: 4,
-    bar: 8,
-
-    // Percentages
-    bustEase: { val: 5, min: -4, max: 20 },
-    backNeckDrop: { val: 15, min: -4, max: 20 },
-    backNeckBend: { val: 10, min: 10, max: 100 },
-    shoulderEase: { val: 50, min: 0, max: 100 },
-    armHoleEase: { val: 30, min: 0, max: 100 },
-    BackWidthEase: { val: 30, min: 0, max: 100 },
-    WaistEase: { val: 30, min: 0, max: 100 },
-    AbdomenEase: { val: 30, min: 0, max: 100 },
-    HipEase: { val: 30, min: 0, max: 100 }
+    bustEase: { val: 80, min: 0, max: 200 },
+    waistEase: { val: 60, min: 0, max: 200 },
+    backWidthEase: { val: 16, min: 0, max: 200 },
+    abdomenEase: { val: 40, min: 0, max: 200 },
+    hipEase: { val: 40, min: 0, max: 200 }
   }
 };
